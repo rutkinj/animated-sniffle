@@ -21,10 +21,16 @@ public class Blammer : MonoBehaviour
   private void Shoot()
   {
     RaycastHit hit;
-    Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000f);
-    if (hit.transform.CompareTag("Enemy"))
+    if (Physics.Raycast(
+        cam.transform.position,
+        cam.transform.forward,
+        out hit, 1000f))
     {
-      hit.transform.GetComponent<Health>().TakeDamage(damage);
+      if (hit.transform.CompareTag("Enemy"))
+      {
+        hit.transform.GetComponent<Health>().TakeDamage(damage);
+      }
     }
+
   }
 }
