@@ -17,7 +17,8 @@ public class Health : MonoBehaviour
 
     private void Die(){
         anim.SetTrigger("die");
-        Destroy(gameObject);
+        GetComponent<BoxCollider>().enabled = false;
+        Destroy(gameObject, 1f);
     }
 
 }
