@@ -5,7 +5,21 @@ using UnityEngine.InputSystem;
 
 public class Blammer : MonoBehaviour
 {
-    void OnFire(InputValue value){
-        print("bingbong");
-    }
+  Camera cam = null;
+
+  void Awake()
+  {
+    cam = GetComponentInParent<Camera>();
+  }
+
+  void OnFire(InputValue value)
+  {
+    Shoot();
+  }
+
+  private void Shoot()
+  {
+    RaycastHit hit;
+    Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1000f);
+  }
 }
