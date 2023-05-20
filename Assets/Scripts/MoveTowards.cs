@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class MoveTowards : MonoBehaviour
 {
-  [SerializeField] float speed = 10f;
-
   Transform player = null;
   NavMeshAgent agent = null;
 
@@ -24,8 +22,6 @@ public class MoveTowards : MonoBehaviour
 
   void Move()
   {
-    float step = speed * Time.deltaTime;
-    // agent.Move(Vector3.MoveTowards(transform.position, player.position, step));
     agent.SetDestination(player.position);
   }
 }
