@@ -682,6 +682,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1510271870, guid: cffac093a74b74246b3d67051618cee3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510271870, guid: cffac093a74b74246b3d67051618cee3, type: 3}
       propertyPath: m_AngularSpeed
       value: 50
       objectReference: {fileID: 0}
@@ -732,6 +736,10 @@ PrefabInstance:
     - target: {fileID: 504101198097975123, guid: cffac093a74b74246b3d67051618cee3, type: 3}
       propertyPath: m_Name
       value: Walker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5939048801426576338, guid: cffac093a74b74246b3d67051618cee3, type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffac093a74b74246b3d67051618cee3, type: 3}
@@ -903,6 +911,10 @@ PrefabInstance:
     - target: {fileID: 504101198097975123, guid: cffac093a74b74246b3d67051618cee3, type: 3}
       propertyPath: m_Name
       value: Walker (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5939048801426576338, guid: cffac093a74b74246b3d67051618cee3, type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffac093a74b74246b3d67051618cee3, type: 3}
