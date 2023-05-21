@@ -20,7 +20,7 @@ public class MoveTowards : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    Move2d();
+      Move2d();
   }
 
   void Move()
@@ -34,52 +34,44 @@ public class MoveTowards : MonoBehaviour
     // while (!Mathf.Approximately(player.position.x, transform.position.x) &&
     // !Mathf.Approximately(player.position.z, transform.position.z))
     // {
-      step = speed * Time.deltaTime;
-      float xDist = player.position.x - transform.position.x;
-      float zDist = player.position.z - transform.position.z;
+    step = speed * Time.deltaTime;
+    float xDist = player.position.x - transform.position.x;
+    float zDist = player.position.z - transform.position.z;
 
-      bool moveX = Mathf.Abs(xDist) > Mathf.Abs(zDist);
+    bool moveX = Mathf.Abs(xDist) > Mathf.Abs(zDist);
 
-      if (moveX)
+    if (moveX)
+    {
+      print("moving x");
+      //move x
+      if (xDist > 0)
       {
-        print("moving x");
-        //move x
-        if (xDist > 0)
-        {
-          print("moving right");
-          transform.Translate(Vector3.right * step, Space.World);
-        }
-        else
-        {
-          print("moving left");
-
-          transform.Translate(Vector3.left * step, Space.World);
-        }
+        print("moving right");
+        transform.Translate(Vector3.right * step, Space.World);
       }
       else
       {
-        //move z
-        print("moving z");
-        if (zDist < 0)
-        {
-          print("moving back");
+        print("moving left");
 
-          transform.Translate(Vector3.back * step, Space.World);
-        }
-        else
-        {
-          print("moving fwd");
-
-          transform.Translate(Vector3.forward * step, Space.World);
-        }
+        transform.Translate(Vector3.left * step, Space.World);
       }
+    }
+    else
+    {
+      //move z
+      print("moving z");
+      if (zDist < 0)
+      {
+        print("moving back");
 
-      print("about to wait");
-    // }sjakhbfkfs
-  }
+        transform.Translate(Vector3.back * step, Space.World);
+      }
+      else
+      {
+        print("moving fwd");
 
-  IEnumerator Wait(float waitTime)
-  {
-    yield return new WaitForSeconds(waitTime);
+        transform.Translate(Vector3.forward * step, Space.World);
+      }
+    }
   }
 }
