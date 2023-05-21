@@ -49,6 +49,12 @@ public class Blammer : MonoBehaviour
     line.enabled = true;
     line.SetPosition(0, start);
     line.SetPosition(1, end);
+    StartCoroutine(LaserLifetime());
+    
+  }
+  
+  IEnumerator LaserLifetime(){
+    yield return new WaitForSeconds(laserLifetime);
     line.enabled = false;
   }
 }
