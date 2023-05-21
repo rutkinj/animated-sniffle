@@ -20,7 +20,7 @@ public class MoveTowards : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-      Move2d();
+      Move();
   }
 
   void Move()
@@ -74,4 +74,6 @@ public class MoveTowards : MonoBehaviour
       }
     }
   }
+
+
 }
