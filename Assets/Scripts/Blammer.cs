@@ -7,7 +7,9 @@ public class Blammer : MonoBehaviour
 {
   [SerializeField] int damage = 1;
   [SerializeField] GameObject hitEffect;
+  [SerializeField] GameObject projectile;
   [SerializeField] float laserLifetime = .05f;
+  [SerializeField] Transform launchPoint;
   Camera cam = null;
   LineRenderer line = null;
 
@@ -28,10 +30,11 @@ public class Blammer : MonoBehaviour
     if (Physics.Raycast(
         cam.transform.position,
         cam.transform.forward,
-        out hit, 1000f))
+        out hit, 100f))
     {
       MakeLine(transform.position, hit.point);
       SpawnHitEffect(hit);
+      // SpawnProjectile(hit);
       if (hit.transform.CompareTag("Enemy"))
       {
         hit.transform.GetComponent<Health>().TakeDamage(damage);
@@ -45,6 +48,11 @@ public class Blammer : MonoBehaviour
     Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
   }
 
+  private void SpawnProjectile(RaycastHit hit){
+    var shotta = Instantiate(projectile, launchPoint.position, Quaternion.identity);
+    shotta.GetComponent<Projectile>().SetTarget(hit.point);
+  }
+
   private void MakeLine(Vector3 start, Vector3 end){
     line.enabled = true;
     line.SetPosition(0, start);
@@ -52,7 +60,7 @@ public class Blammer : MonoBehaviour
     StartCoroutine(LaserLifetime());
     
   }
-  
+
   IEnumerator LaserLifetime(){
     yield return new WaitForSeconds(laserLifetime);
     line.enabled = false;
