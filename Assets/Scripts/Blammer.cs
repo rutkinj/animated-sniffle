@@ -39,8 +39,8 @@ public class Blammer : MonoBehaviour
     if (!shotOneReady)
     {
       shotOneTimer -= Time.deltaTime;
-      guageFillOne.localPosition = new Vector3(0, shotOneTimer/-4, 0);
-      guageFillOne.localScale = new Vector3(1, (shotTimer-shotOneTimer)/2, 1);
+      guageFillOne.localPosition = new Vector3(0, shotOneTimer / -4, 0);
+      guageFillOne.localScale = new Vector3(1, (shotTimer - shotOneTimer) / 2, 1);
       shotOneReady = shotOneTimer <= 0;
     }
     if (!shotTwoReady)
@@ -78,7 +78,8 @@ public class Blammer : MonoBehaviour
         out hit, 1000f))
     {
       //try shot one
-      if (shotOneReady){
+      if (shotOneReady)
+      {
         MakeLine(transform.position, hit.point);
         SpawnHitEffect(hit);
         // SpawnProjectile(hit);
@@ -88,7 +89,8 @@ public class Blammer : MonoBehaviour
         }
         ResetTimerOne();
       }
-      else if(shotTwoReady){
+      else if (shotTwoReady)
+      {
         MakeLine(transform.position, hit.point);
         SpawnHitEffect(hit);
         // SpawnProjectile(hit);
@@ -98,10 +100,11 @@ public class Blammer : MonoBehaviour
         }
         ResetTimerTwo();
       }
-      else{
+      else
+      {
         print("on cooldown!!!");
       }
-      
+
     }
   }
 
@@ -112,7 +115,7 @@ public class Blammer : MonoBehaviour
 
   private void SpawnProjectile(RaycastHit hit)
   {
-    var shotta = Instantiate(projectile, launchPoint.position, Quaternion.identity);
+    var shotta = Instantiate(projectile, launchPoint.position, Quaternion.LookRotation(hit.point, Vector3.up));
     shotta.GetComponent<Projectile>().SetTarget(hit.point);
   }
 
@@ -122,7 +125,6 @@ public class Blammer : MonoBehaviour
     line.SetPosition(0, start);
     line.SetPosition(1, end);
     StartCoroutine(LaserLifetime());
-
   }
 
   IEnumerator LaserLifetime()
