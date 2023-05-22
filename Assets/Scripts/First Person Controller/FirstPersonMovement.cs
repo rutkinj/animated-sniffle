@@ -23,4 +23,8 @@ public class FirstPersonMovement : MonoBehaviour
     {
         rawInput = value.Get<Vector2>();
     }
+
+    void OnRun(){
+        rawInput *= new Vector2(2,2);
+    }
 }
