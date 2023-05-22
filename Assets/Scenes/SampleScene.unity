@@ -5770,6 +5770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 6317365028153623187, guid: 48ac0a93769362c46b1582ddeb20c7bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6317365028153623188, guid: 48ac0a93769362c46b1582ddeb20c7bd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5825,7 +5829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1130725078037024, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1773623360729482, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_Name
