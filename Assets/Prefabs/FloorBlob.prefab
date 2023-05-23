@@ -120,7 +120,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.34, y: 0.07, z: 1.33}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!114 &1765969378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   cooldown: 5
-  range: 0.5
+  range: 1.5
+  anim: {fileID: 4139508590677559483}
 --- !u!1 &2332826816136019167
 GameObject:
   m_ObjectHideFlags: 0

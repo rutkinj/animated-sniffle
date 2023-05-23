@@ -7,6 +7,7 @@ public class Attacker : MonoBehaviour
   [SerializeField] int damage = 1;
   [SerializeField] float cooldown = 5f;
   [SerializeField] float range = .5f;
+  [SerializeField] Animator anim;
   Transform player;
   PlayerHealth playerHp;
   float currentCooldown;
@@ -16,6 +17,7 @@ public class Attacker : MonoBehaviour
   {
     player = GameObject.FindGameObjectWithTag("Player").transform;
     playerHp = player.GetComponent<PlayerHealth>();
+    currentCooldown = 0;
   }
 
   void Update()
@@ -24,6 +26,9 @@ public class Attacker : MonoBehaviour
     {
       if (Vector3.Distance(transform.position, player.position) < range)
       {
+        if(anim){
+          anim.SetTrigger("attack");
+        }
         playerHp.TakeDamage(damage);
         currentCooldown = cooldown;
       }
