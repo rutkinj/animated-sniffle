@@ -5,19 +5,21 @@ using UnityEngine;
 public class Attacker : MonoBehaviour
 {
   [SerializeField] int damage = 1;
-  [SerializeField] float cooldown = 5f;
+  [SerializeField] float attackCooldown = 5f;
   [SerializeField] float range = .5f;
+  [SerializeField] float attackDelay = .2f;
   [SerializeField] Animator anim;
   Transform player;
   PlayerHealth playerHp;
   float currentCooldown;
+  float timeInRange;
 
 
   private void Awake()
   {
     player = GameObject.FindGameObjectWithTag("Player").transform;
     playerHp = player.GetComponent<PlayerHealth>();
-    currentCooldown = 0;
+    currentCooldown = 0.0f;
   }
 
   void Update()
@@ -26,12 +28,22 @@ public class Attacker : MonoBehaviour
     {
       if (Vector3.Distance(transform.position, player.position) < range)
       {
-        if(anim){
-          anim.SetTrigger("attack");
+        if (timeInRange == 0)
+        {
+          timeInRange = Time.time;
         }
-        playerHp.TakeDamage(damage);
-        currentCooldown = cooldown;
+
+        if (Time.time - timeInRange > attackDelay)
+        {
+          if (anim)
+          {
+            anim.SetTrigger("attack");
+          }
+          playerHp.TakeDamage(damage);
+          currentCooldown = attackCooldown;
+        }
       }
+      else timeInRange = 0;
     }
     else currentCooldown -= Time.deltaTime;
   }
