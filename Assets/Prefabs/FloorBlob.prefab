@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 79080800436522441}
   - component: {fileID: 878439606300137816}
   - component: {fileID: 1765969378}
+  - component: {fileID: 3314082744216977756}
   m_Layer: 0
   m_Name: FloorBlob
   m_TagString: Enemy
@@ -137,6 +138,19 @@ MonoBehaviour:
   cooldown: 5
   range: 1.5
   anim: {fileID: 4139508590677559483}
+--- !u!114 &3314082744216977756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581320367698967907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca930b705f628c344ad2991de1655155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedAlter: 0.25
 --- !u!1 &2332826816136019167
 GameObject:
   m_ObjectHideFlags: 0

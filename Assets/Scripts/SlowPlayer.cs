@@ -14,7 +14,7 @@ public class SlowPlayer : MonoBehaviour
 
   // Update is called once per frame
 
-  private void OnCollisionEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
   {
     if (other.CompareTag("Player"))
     {
@@ -23,7 +23,7 @@ public class SlowPlayer : MonoBehaviour
     }
   }
 
-  private void OnCollisionExit(Collider other) {
+  private void OnTriggerExit(Collider other) {
     if (other.CompareTag("Player"))
     {
       print("player left");
