@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65849693269c384ab27f0ad4f04e9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 3
+  hitpoints: 2
   anim: {fileID: 4139508590677559483}
 --- !u!65 &878439606300137816
 BoxCollider:
@@ -135,8 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  cooldown: 5
-  range: 1.5
+  attackCooldown: 5
+  range: 1
+  attackDelay: 0.2
   anim: {fileID: 4139508590677559483}
 --- !u!114 &3314082744216977756
 MonoBehaviour:

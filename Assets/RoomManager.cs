@@ -4,22 +4,46 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] Door[] doors;
-    [SerializeField] Health[] enemies;
-    // Start is called before the first frame update
-    void Start()
-    {
-        doors = GetComponentsInChildren<Door>();
-        enemies = GetComponentsInChildren<Health>();
-    }
+  [SerializeField] Door[] doors;
+  [SerializeField] Health[] enemies;
+  
+  void Awake()
+  {
+    doors = GetComponentsInChildren<Door>();
+    enemies = GetComponentsInChildren<Health>();
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-     if (enemies[0] == null){
-        foreach(Door door in doors){
-            door.OpenDoor();
-        }
-     }   
+  void Update(){
+    if(EnemiesDefeated()){
+        OpenDoors();
     }
+  }
+
+  public bool DoorButton(){
+    if(EnemiesDefeated()){
+        OpenDoors();
+    }
+    return EnemiesDefeated();
+  }
+
+  bool EnemiesDefeated()
+  {
+    foreach (Health enemy in enemies)
+    {
+      if (enemy != null)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  void OpenDoors()
+  {
+    foreach (Door door in doors)
+    {
+      door.OpenDoor();
+    }
+  }
+
 }

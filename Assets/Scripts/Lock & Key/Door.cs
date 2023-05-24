@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] KeyType doorType;
-    [SerializeField] bool removeUsedKey = true;
+  [SerializeField] bool openable = true;
+  [SerializeField] KeyType doorType;
+  [SerializeField] bool removeUsedKey = true;
 
-    Animator anim;
+  Animator anim;
 
-    void Awake()
+  void Awake()
+  {
+    anim = GetComponentInChildren<Animator>();
+  }
+
+  void OnTriggerEnter(Collider other)
+  {
+    Inventory playerInventory = other.GetComponent<Inventory>();
+
+    if (playerInventory == null) { return; }
+    if (anim == null) { return; }
+
+    if (playerInventory.IsHoldingKey(doorType))
     {
-        anim = GetComponentInChildren<Animator>();
+      OpenDoor();
+      if (removeUsedKey)
+      {
+        playerInventory.RemoveKey(doorType);
+      }
     }
+  }
 
-    void OnTriggerEnter(Collider other)
+  public void OpenDoor()
+  {
+    if (openable)
     {
-        Inventory playerInventory = other.GetComponent<Inventory>();
-
-        if (playerInventory == null) { return; }
-        if (anim == null) { return; }
-
-        if (playerInventory.IsHoldingKey(doorType))
-        {
-            OpenDoor();
-            if (removeUsedKey)
-            {
-                playerInventory.RemoveKey(doorType);
-            }
-        }
+      anim.SetBool("isOpen", true);
     }
-
-    public void OpenDoor(){
-        anim.SetBool("isOpen", true);
-    }
+  }
 }
