@@ -23,11 +23,15 @@ public class Door : MonoBehaviour
 
         if (playerInventory.IsHoldingKey(doorType))
         {
-            anim.SetBool("isOpen", true);
+            OpenDoor();
             if (removeUsedKey)
             {
                 playerInventory.RemoveKey(doorType);
             }
         }
+    }
+
+    public void OpenDoor(){
+        anim.SetBool("isOpen", true);
     }
 }
