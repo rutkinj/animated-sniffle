@@ -13,6 +13,9 @@ public class Blammer : MonoBehaviour
   [SerializeField] Transform launchPoint;
   [SerializeField] Transform guageFillOne;
   [SerializeField] Transform guageFillTwo;
+  [Header("SFX")]
+  [SerializeField] AudioClip fireSFX;
+  [SerializeField] AudioClip cooldownSFX;
 
   Camera cam = null;
   LineRenderer line = null;
@@ -83,8 +86,8 @@ public class Blammer : MonoBehaviour
       if (shotOneReady)
       {
         MakeLine(transform.position, hit.point);
+        SFX.PlayOneShot(fireSFX);
         SpawnHitEffect(hit);
-        SFX.Play();
         // SpawnProjectile(hit);
         if (hit.transform.CompareTag("Enemy"))
         {
@@ -96,7 +99,7 @@ public class Blammer : MonoBehaviour
       {
         MakeLine(transform.position, hit.point);
         SpawnHitEffect(hit);
-        SFX.Play();
+        SFX.PlayOneShot(fireSFX);
         // SpawnProjectile(hit);
         if (hit.transform.CompareTag("Enemy"))
         {
@@ -106,6 +109,7 @@ public class Blammer : MonoBehaviour
       }
       else
       {
+        SFX.PlayOneShot(cooldownSFX);
         print("on cooldown!!!");
       }
 

@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
   [SerializeField] int maxHitPoints = 5;
   [SerializeField] TextMeshProUGUI healthDisplay;
   //   [SerializeField] Animator anim;
+  [SerializeField] AudioSource sfx;
   int hitpoints = 0;
   bool isDead = false;
 
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
   public void TakeDamage(int damage)
   {
     hitpoints -= damage;
+    sfx.Play();
     UpdateDisplay();
 
     if (hitpoints <= 0)
