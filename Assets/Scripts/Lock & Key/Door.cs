@@ -11,6 +11,9 @@ public class Door : MonoBehaviour
   Animator anim;
   RoomManager manager;
 
+  Vector3 enterPos;
+  
+
   void Awake()
   {
     anim = GetComponentInChildren<Animator>();
@@ -23,6 +26,7 @@ public class Door : MonoBehaviour
   void OnTriggerEnter(Collider other)
   {
     if(!other.CompareTag("Player")) return;
+    enterPos = other.transform.position;
     if(manager.EnemiesDefeated() || !manager.GetIsActive()){
       OpenDoor();
     }
@@ -46,8 +50,9 @@ public class Door : MonoBehaviour
   }
 
   private void OnTriggerExit(Collider other) {
+    if (!other.CompareTag("Player")) return;
     CloseDoor();
-    if(!manager.GetIsActive()){
+    if(!manager.GetIsActive() && Vector3.Distance(other.transform.position, enterPos) > 3.5f){
       manager.RoomStart();
     }
   }
