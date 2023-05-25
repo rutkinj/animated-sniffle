@@ -15,6 +15,9 @@ public class Door : MonoBehaviour
   {
     anim = GetComponentInChildren<Animator>();
     manager = GetComponentInParent<RoomManager>();
+    if(manager == null) {
+      GetComponent<BoxCollider>().enabled = false;
+    }
   }
 
   void OnTriggerEnter(Collider other)
