@@ -475,6 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 5
   healthDisplay: {fileID: 0}
+  sfx: {fileID: 6984870153479321337}
 --- !u!114 &1054308445249577780
 MonoBehaviour:
   m_ObjectHideFlags: 0
