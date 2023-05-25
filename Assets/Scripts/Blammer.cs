@@ -16,6 +16,7 @@ public class Blammer : MonoBehaviour
 
   Camera cam = null;
   LineRenderer line = null;
+  AudioSource SFX;
 
   bool shotOneReady = true;
   float shotOneTimer = 0f;
@@ -27,6 +28,7 @@ public class Blammer : MonoBehaviour
   {
     cam = GetComponentInParent<Camera>();
     line = GetComponentInChildren<LineRenderer>();
+    SFX = GetComponent<AudioSource>();
   }
 
   void Update()
@@ -82,6 +84,7 @@ public class Blammer : MonoBehaviour
       {
         MakeLine(transform.position, hit.point);
         SpawnHitEffect(hit);
+        SFX.Play();
         // SpawnProjectile(hit);
         if (hit.transform.CompareTag("Enemy"))
         {
@@ -93,6 +96,7 @@ public class Blammer : MonoBehaviour
       {
         MakeLine(transform.position, hit.point);
         SpawnHitEffect(hit);
+        SFX.Play();
         // SpawnProjectile(hit);
         if (hit.transform.CompareTag("Enemy"))
         {
