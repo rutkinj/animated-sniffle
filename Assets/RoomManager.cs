@@ -45,6 +45,7 @@ public class RoomManager : MonoBehaviour
         return false;
       }
     }
+    isActive = false;
     return true;
   }
 

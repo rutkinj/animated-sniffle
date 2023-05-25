@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
   void OnTriggerEnter(Collider other)
   {
     if(!other.CompareTag("Player")) return;
-    if(manager.GetIsCleared() || !manager.GetIsActive()){
+    if(manager.EnemiesDefeated() || !manager.GetIsActive()){
       OpenDoor();
     }
 
