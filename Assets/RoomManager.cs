@@ -7,6 +7,9 @@ public class RoomManager : MonoBehaviour
   [SerializeField] Door[] doors;
   [SerializeField] MoveTowards[] enemies;
 
+  bool isCleared = false;
+  bool isActive = false;
+
   void Awake()
   {
     doors = GetComponentsInChildren<Door>();
@@ -16,11 +19,13 @@ public class RoomManager : MonoBehaviour
 
   void Update()
   {
-    if (EnemiesDefeated())
-    {
-      OpenDoors();
-    }
+    // if (EnemiesDefeated())
+    // {
+    //   OpenDoors();
+    // }
   }
+
+
 
   public bool DoorButton()
   {
@@ -31,7 +36,7 @@ public class RoomManager : MonoBehaviour
     return EnemiesDefeated();
   }
 
-  bool EnemiesDefeated()
+  public bool EnemiesDefeated()
   {
     foreach (MoveTowards enemy in enemies)
     {
@@ -59,11 +64,22 @@ public class RoomManager : MonoBehaviour
     }
   }
 
-  void RoomStart()
+  public void RoomStart()
   {
+    isActive = true;
     foreach (MoveTowards enemy in enemies)
     {
       enemy.canMove = true;
     }
+  }
+
+  public bool GetIsCleared()
+  {
+    return isCleared;
+  }
+
+  public bool GetIsActive()
+  {
+    return isActive;
   }
 }

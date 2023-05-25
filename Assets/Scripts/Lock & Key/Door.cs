@@ -9,26 +9,43 @@ public class Door : MonoBehaviour
   [SerializeField] bool removeUsedKey = true;
 
   Animator anim;
+  RoomManager manager;
 
   void Awake()
   {
     anim = GetComponentInChildren<Animator>();
+    manager = GetComponentInParent<RoomManager>();
   }
 
   void OnTriggerEnter(Collider other)
   {
-    Inventory playerInventory = other.GetComponent<Inventory>();
-
-    if (playerInventory == null) { return; }
-    if (anim == null) { return; }
-
-    if (playerInventory.IsHoldingKey(doorType))
-    {
+    if(!other.CompareTag("Player")) return;
+    if(manager.GetIsCleared() || !manager.GetIsActive()){
       OpenDoor();
-      if (removeUsedKey)
-      {
-        playerInventory.RemoveKey(doorType);
-      }
+    }
+
+
+    // manager.CheckStatus()
+
+    // Inventory playerInventory = other.GetComponent<Inventory>();
+
+    // if (playerInventory == null) { return; }
+    // if (anim == null) { return; }
+
+    // if (playerInventory.IsHoldingKey(doorType))
+    // {
+    //   OpenDoor();
+    //   if (removeUsedKey)
+    //   {
+    //     playerInventory.RemoveKey(doorType);
+    //   }
+    // }
+  }
+
+  private void OnTriggerExit(Collider other) {
+    CloseDoor();
+    if(!manager.GetIsActive()){
+      manager.RoomStart();
     }
   }
 
@@ -37,6 +54,14 @@ public class Door : MonoBehaviour
     if (openable)
     {
       anim.SetBool("isOpen", true);
+    }
+  }
+
+  public void CloseDoor()
+  {
+    if (openable)
+    {
+      anim.SetBool("isOpen", false);
     }
   }
 }
