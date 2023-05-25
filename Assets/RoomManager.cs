@@ -5,30 +5,35 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
   [SerializeField] Door[] doors;
-  [SerializeField] Health[] enemies;
-  
+  [SerializeField] MoveTowards[] enemies;
+
   void Awake()
   {
     doors = GetComponentsInChildren<Door>();
-    enemies = GetComponentsInChildren<Health>();
+    enemies = GetComponentsInChildren<MoveTowards>();
+    RoomSetup();
   }
 
-  void Update(){
-    if(EnemiesDefeated()){
-        OpenDoors();
+  void Update()
+  {
+    if (EnemiesDefeated())
+    {
+      OpenDoors();
     }
   }
 
-  public bool DoorButton(){
-    if(EnemiesDefeated()){
-        OpenDoors();
+  public bool DoorButton()
+  {
+    if (EnemiesDefeated())
+    {
+      OpenDoors();
     }
     return EnemiesDefeated();
   }
 
   bool EnemiesDefeated()
   {
-    foreach (Health enemy in enemies)
+    foreach (MoveTowards enemy in enemies)
     {
       if (enemy != null)
       {
@@ -46,4 +51,19 @@ public class RoomManager : MonoBehaviour
     }
   }
 
+  void RoomSetup()
+  {
+    foreach (MoveTowards enemy in enemies)
+    {
+      enemy.canMove = false;
+    }
+  }
+
+  void RoomStart()
+  {
+    foreach (MoveTowards enemy in enemies)
+    {
+      enemy.canMove = true;
+    }
+  }
 }

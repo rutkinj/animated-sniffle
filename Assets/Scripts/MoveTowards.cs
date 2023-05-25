@@ -7,6 +7,7 @@ public class MoveTowards : MonoBehaviour
 {
   [SerializeField] float speed = 3f;
   [SerializeField] float moveDelay = 1f;
+  public bool canMove = true;
   float step;
   Transform player = null;
   NavMeshAgent agent = null;
@@ -20,7 +21,10 @@ public class MoveTowards : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (canMove)
+    {
       Move();
+    }
   }
 
   void Move()
