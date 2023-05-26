@@ -347,7 +347,6 @@ GameObject:
   - component: {fileID: 114963311885979670}
   - component: {fileID: 114497868231759342}
   - component: {fileID: 352091710}
-  - component: {fileID: 1054308445249577780}
   - component: {fileID: 6984870153479321337}
   - component: {fileID: 2680916159697786380}
   m_Layer: 0
@@ -477,18 +476,6 @@ MonoBehaviour:
   maxHitPoints: 5
   healthDisplay: {fileID: 0}
   sfx: {fileID: 6984870153479321337}
---- !u!114 &1054308445249577780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773623360729482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 799732c16b5cee94a8af3418b7c2d9dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &6984870153479321337
 AudioSource:
   m_ObjectHideFlags: 0
@@ -597,6 +584,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d261957f213294797237ea62598f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  red: {fileID: 0}
+  blue: {fileID: 0}
+  green: {fileID: 0}
 --- !u!1001 &82516013
 PrefabInstance:
   m_ObjectHideFlags: 0
