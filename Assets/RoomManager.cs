@@ -46,6 +46,7 @@ public class RoomManager : MonoBehaviour
       }
     }
     isActive = false;
+    isCleared = true;
     return true;
   }
 
@@ -68,6 +69,7 @@ public class RoomManager : MonoBehaviour
 
   public void RoomStart()
   {
+    if(isCleared)return;
     isActive = true;
     foreach (MoveTowards enemy in enemies)
     {
