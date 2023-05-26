@@ -36,16 +36,11 @@ public class Door : MonoBehaviour
     if (!other.CompareTag("Player")) return;
     enterPos = other.transform.position;
 
-    //openable in relation to manager
-    openable = (!manager.GetIsActive() || manager.EnemiesDefeated());
-
-    //key related
     Inventory playerInventory = other.GetComponent<Inventory>();
-    if (playerInventory == null) { return; }
-
-    if(keyDoor){
-      openable = playerInventory.IsHoldingKey(doorType);
+    if(!manager.GetIsActive() || manager.EnemiesDefeated()){
+      openable = KeyCheck(playerInventory);
     }
+    else openable = false;
 
     OpenDoor();
 
@@ -89,5 +84,13 @@ public class Door : MonoBehaviour
       anim.SetBool("isOpen", false);
       audioSource.PlayOneShot(closeSFX);
     }
+  }
+
+  public bool KeyCheck(Inventory playerInventory){
+    if (keyDoor)
+    {
+      return playerInventory.IsHoldingKey(doorType);
+    }
+    else return true;
   }
 }

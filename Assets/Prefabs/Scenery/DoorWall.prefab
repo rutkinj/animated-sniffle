@@ -397,25 +397,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4447620072679731518, guid: 25c28b613de39fa40b6d102cbf50e19d, type: 3}
   m_PrefabInstance: {fileID: 105257795056899754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2831262694835377704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4381137723408115604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68930b2904d0c0648bf2add9e245b9c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openable: 1
-  doorType: 0
-  removeUsedKey: 1
-  openSFX: {fileID: 8300000, guid: 564ce5c8ca6740546ac744494f68e5a6, type: 3}
-  closeSFX: {fileID: 8300000, guid: 9bd93a2c1fe90904a9f73e51d7b4e55b, type: 3}
-  unlockedSFX: {fileID: 8300000, guid: 195f4429ce0e1ab47bb22ebc60a4ff83, type: 3}
-  lockedSFX: {fileID: 8300000, guid: 1a10a68c2cd911f40b176da8f06fae6c, type: 3}
 --- !u!82 &2330046415707291516
 AudioSource:
   m_ObjectHideFlags: 0
@@ -512,3 +493,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2831262694835377704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381137723408115604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68930b2904d0c0648bf2add9e245b9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openable: 1
+  keyDoor: 0
+  doorType: 0
+  removeUsedKey: 0
+  openSFX: {fileID: 8300000, guid: 564ce5c8ca6740546ac744494f68e5a6, type: 3}
+  closeSFX: {fileID: 8300000, guid: 9bd93a2c1fe90904a9f73e51d7b4e55b, type: 3}
+  lockedSFX: {fileID: 8300000, guid: 1a10a68c2cd911f40b176da8f06fae6c, type: 3}
