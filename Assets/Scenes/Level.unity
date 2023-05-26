@@ -1102,6 +1102,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6317365027489308965, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: shotTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6317365027489308974, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_Layer
       value: 6

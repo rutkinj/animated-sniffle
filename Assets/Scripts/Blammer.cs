@@ -44,15 +44,15 @@ public class Blammer : MonoBehaviour
     if (!shotOneReady)
     {
       shotOneTimer -= Time.deltaTime;
-      guageFillOne.localPosition = new Vector3(0, shotOneTimer / -4, 0);
-      guageFillOne.localScale = new Vector3(1, (shotTimer - shotOneTimer) / 2, 1);
+      guageFillOne.localPosition = new Vector3(0, shotOneTimer / (-2*shotTimer), 0);
+      guageFillOne.localScale = new Vector3(1, (shotTimer - shotOneTimer) / shotTimer, 1);
       shotOneReady = shotOneTimer <= 0;
     }
     if (!shotTwoReady)
     {
       shotTwoTimer -= Time.deltaTime;
-      guageFillTwo.localPosition = new Vector3(0, shotTwoTimer / -4, 0);
-      guageFillTwo.localScale = new Vector3(1, (shotTimer - shotTwoTimer) / 2, 1);
+      guageFillTwo.localPosition = new Vector3(0, shotTwoTimer / (-2 * shotTimer), 0);
+      guageFillTwo.localScale = new Vector3(1, (shotTimer - shotTwoTimer) / shotTimer, 1);
       shotTwoReady = shotTwoTimer <= 0;
     }
   }
