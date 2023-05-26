@@ -62,6 +62,7 @@ public class RoomManager : MonoBehaviour
     foreach (MoveTowards enemy in enemies)
     {
       enemy.canMove = false;
+      enemy.GetComponent<Animator>().speed = 0;
     }
   }
 
@@ -71,6 +72,7 @@ public class RoomManager : MonoBehaviour
     foreach (MoveTowards enemy in enemies)
     {
       enemy.canMove = true;
+      enemy.GetComponent<Animator>().speed = 1;
     }
   }
 
