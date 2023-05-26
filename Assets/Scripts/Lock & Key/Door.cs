@@ -5,8 +5,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
   [SerializeField] bool openable = true;
+  [SerializeField] bool keyDoor = false;
   [SerializeField] KeyType doorType;
-  [SerializeField] bool removeUsedKey = true;
+  [SerializeField] bool removeUsedKey = false;
   [SerializeField] AudioClip openSFX;
   [SerializeField] AudioClip closeSFX;
   [SerializeField] AudioClip lockedSFX;
@@ -14,7 +15,7 @@ public class Door : MonoBehaviour
 
   Animator anim;
   RoomManager manager;
-  AudioSource audio;
+  AudioSource audioSource;
 
   Vector3 enterPos;
 
@@ -23,7 +24,7 @@ public class Door : MonoBehaviour
   {
     anim = GetComponentInChildren<Animator>();
     manager = GetComponentInParent<RoomManager>();
-    audio = GetComponent<AudioSource>();
+    audioSource = GetComponent<AudioSource>();
     if (manager == null)
     {
       openable = false;
@@ -34,17 +35,21 @@ public class Door : MonoBehaviour
   {
     if (!other.CompareTag("Player")) return;
     enterPos = other.transform.position;
+
+    //openable in relation to manager
     openable = (!manager.GetIsActive() || manager.EnemiesDefeated());
+
+    //key related
+    Inventory playerInventory = other.GetComponent<Inventory>();
+    if (playerInventory == null) { return; }
+
+    if(keyDoor){
+      openable = playerInventory.IsHoldingKey(doorType);
+    }
+
     OpenDoor();
 
-    // manager.CheckStatus()
-
-    // Inventory playerInventory = other.GetComponent<Inventory>();
-
-    // if (playerInventory == null) { return; }
-    // if (anim == null) { return; }
-
-    // if (playerInventory.IsHoldingKey(doorType))
+    // if (keyDoor && playerInventory.IsHoldingKey(doorType))
     // {
     //   OpenDoor();
     //   if (removeUsedKey)
@@ -69,10 +74,11 @@ public class Door : MonoBehaviour
     if (openable)
     {
       anim.SetBool("isOpen", true);
-      audio.PlayOneShot(openSFX);
+      audioSource.PlayOneShot(openSFX);
     }
-    else{
-      audio.PlayOneShot(lockedSFX);
+    else
+    {
+      audioSource.PlayOneShot(lockedSFX);
     }
   }
 
@@ -81,7 +87,7 @@ public class Door : MonoBehaviour
     if (openable)
     {
       anim.SetBool("isOpen", false);
-      audio.PlayOneShot(closeSFX);
+      audioSource.PlayOneShot(closeSFX);
     }
   }
 }
