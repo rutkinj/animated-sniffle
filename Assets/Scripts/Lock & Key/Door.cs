@@ -7,30 +7,35 @@ public class Door : MonoBehaviour
   [SerializeField] bool openable = true;
   [SerializeField] KeyType doorType;
   [SerializeField] bool removeUsedKey = true;
+  [SerializeField] AudioClip openSFX;
+  [SerializeField] AudioClip closeSFX;
+  [SerializeField] AudioClip lockedSFX;
+
 
   Animator anim;
   RoomManager manager;
+  AudioSource audio;
 
   Vector3 enterPos;
-  
+
 
   void Awake()
   {
     anim = GetComponentInChildren<Animator>();
     manager = GetComponentInParent<RoomManager>();
-    if(manager == null) {
-      GetComponent<BoxCollider>().enabled = false;
+    audio = GetComponent<AudioSource>();
+    if (manager == null)
+    {
+      openable = false;
     }
   }
 
   void OnTriggerEnter(Collider other)
   {
-    if(!other.CompareTag("Player")) return;
+    if (!other.CompareTag("Player")) return;
     enterPos = other.transform.position;
-    if(manager.EnemiesDefeated() || !manager.GetIsActive()){
-      OpenDoor();
-    }
-
+    openable = (!manager.GetIsActive() || manager.EnemiesDefeated());
+    OpenDoor();
 
     // manager.CheckStatus()
 
@@ -49,10 +54,12 @@ public class Door : MonoBehaviour
     // }
   }
 
-  private void OnTriggerExit(Collider other) {
+  private void OnTriggerExit(Collider other)
+  {
     if (!other.CompareTag("Player")) return;
     CloseDoor();
-    if(!manager.GetIsActive() && Vector3.Distance(other.transform.position, enterPos) > 3.5f){
+    if (!manager.GetIsActive() && !manager.GetIsCleared() && Vector3.Distance(other.transform.position, enterPos) > 3.5f)
+    {
       manager.RoomStart();
     }
   }
@@ -62,6 +69,10 @@ public class Door : MonoBehaviour
     if (openable)
     {
       anim.SetBool("isOpen", true);
+      audio.PlayOneShot(openSFX);
+    }
+    else{
+      audio.PlayOneShot(lockedSFX);
     }
   }
 
@@ -70,6 +81,7 @@ public class Door : MonoBehaviour
     if (openable)
     {
       anim.SetBool("isOpen", false);
+      audio.PlayOneShot(closeSFX);
     }
   }
 }
