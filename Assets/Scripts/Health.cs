@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
         anim.SetTrigger("die");
         AudioRandomPitch(deathSFX);
         GetComponent<BoxCollider>().enabled = false;
+        GetComponent<Attacker>().enabled = false;
         Destroy(gameObject, 1f);
     }
 
