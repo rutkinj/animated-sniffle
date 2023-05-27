@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-  [SerializeField] int maxHitPoints = 5;
-  [SerializeField] TextMeshProUGUI healthDisplay;
-  //   [SerializeField] Animator anim;
+  [SerializeField] int maxHitPoints = 10;
+  [SerializeField] float healthRecharge = 5;
+  [SerializeField] Slider healthDisplay;
+  [SerializeField] Image healthDisplayFill;
   [SerializeField] AudioSource sfx;
   int hitpoints = 0;
+  float currentHealthRecharge = 0;
   bool isDead = false;
 
   private void Awake()
@@ -18,9 +20,15 @@ public class PlayerHealth : MonoBehaviour
     UpdateDisplay();
   }
 
+  private void Update(){
+    HealthRecharge();
+
+  }
+
   public void TakeDamage(int damage)
   {
     hitpoints -= damage;
+    currentHealthRecharge = healthRecharge;
     sfx.Play();
     UpdateDisplay();
 
@@ -30,9 +38,20 @@ public class PlayerHealth : MonoBehaviour
     }
   }
 
+  public void HealthRecharge(){
+    if(hitpoints == maxHitPoints) return;
+    currentHealthRecharge -= Time.deltaTime;
+    if(currentHealthRecharge <= 0){
+      hitpoints += 1;
+      UpdateDisplay();
+      currentHealthRecharge = healthRecharge;
+    }
+  }
+
   private void Die()
   {
     // anim.SetTrigger("die");
+    healthDisplayFill.enabled = false;
     isDead = true;
   }
 
@@ -43,6 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
   private void UpdateDisplay()
   {
-    healthDisplay.text = hitpoints.ToString();
+    print(hitpoints / maxHitPoints);
+    healthDisplay.SetValueWithoutNotify((float)hitpoints / (float)maxHitPoints);
   }
 }
