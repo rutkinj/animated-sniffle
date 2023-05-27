@@ -18,6 +18,9 @@ public class SceneLoader : MonoBehaviour
     {
       DoRestart();
     }
+    if(Input.GetKeyDown(KeyCode.Escape)){
+      Application.Quit();
+    }
 
   }
 
