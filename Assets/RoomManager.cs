@@ -60,6 +60,7 @@ public class RoomManager : MonoBehaviour
       }
       if(finalRoom){
         FindObjectOfType<FirstPersonMovement>().Freeze();
+        StartCoroutine(GetComponent<RoomCanvas>().DoEnd());
       }
       enemy.GetComponent<Animator>().speed = 1;
     }
