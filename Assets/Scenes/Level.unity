@@ -10613,6 +10613,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8474541556218596148, guid: e4c4dde4a3b8ac040ba73ac857c216df, type: 3}
+      propertyPath: newReloadTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474541556218596148, guid: e4c4dde4a3b8ac040ba73ac857c216df, type: 3}
       propertyPath: rotationSpeed
       value: 75
       objectReference: {fileID: 0}
@@ -10626,7 +10630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697325771303805371, guid: e4c4dde4a3b8ac040ba73ac857c216df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.31
+      value: 1.654
       objectReference: {fileID: 0}
     - target: {fileID: 8697325771303805371, guid: e4c4dde4a3b8ac040ba73ac857c216df, type: 3}
       propertyPath: m_LocalPosition.z
