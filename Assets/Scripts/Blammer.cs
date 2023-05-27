@@ -13,6 +13,7 @@ public class Blammer : MonoBehaviour
   [SerializeField] Transform launchPoint;
   [SerializeField] Transform guageFillOne;
   [SerializeField] Transform guageFillTwo;
+  [SerializeField] Transform booster;
   [Header("SFX")]
   [SerializeField] AudioClip fireSFX;
   [SerializeField] AudioClip cooldownSFX;
@@ -139,5 +140,10 @@ public class Blammer : MonoBehaviour
   {
     yield return new WaitForSeconds(laserLifetime);
     line.enabled = false;
+  }
+
+  public void AttachBooster(float newShotTimer){
+    booster.gameObject.SetActive(true);
+    shotTimer = newShotTimer;
   }
 }
