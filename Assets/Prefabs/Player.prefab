@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 20437472682476688}
   - component: {fileID: 124991110451011126}
   - component: {fileID: 114657890492222300}
+  - component: {fileID: 7132801833429697894}
   m_Layer: 0
   m_Name: First person camera
   m_TagString: MainCamera
@@ -332,6 +333,26 @@ MonoBehaviour:
   sensitivity: 0.44
   smoothing: 1
   character: {fileID: 4207293392497186}
+--- !u!95 &7132801833429697894
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593727746557118}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 039dbbfe5eb2014418b7f17ed88d2931, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1773623360729482
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +370,7 @@ GameObject:
   - component: {fileID: 352091710}
   - component: {fileID: 6984870153479321337}
   - component: {fileID: 2680916159697786380}
+  - component: {fileID: 124716952188454725}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -474,7 +496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 5
+  healthRecharge: 5
   healthDisplay: {fileID: 0}
+  healthDisplayFill: {fileID: 0}
   sfx: {fileID: 6984870153479321337}
 --- !u!82 &6984870153479321337
 AudioSource:
@@ -587,6 +611,18 @@ MonoBehaviour:
   red: {fileID: 0}
   blue: {fileID: 0}
   green: {fileID: 0}
+--- !u!114 &124716952188454725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773623360729482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874c5a5bfea1b0d4e9fb1cb3075c2298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &82516013
 PrefabInstance:
   m_ObjectHideFlags: 0
