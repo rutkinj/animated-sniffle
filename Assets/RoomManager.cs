@@ -18,25 +18,6 @@ public class RoomManager : MonoBehaviour
     RoomSetup();
   }
 
-  void Update()
-  {
-    // if (EnemiesDefeated())
-    // {
-    //   OpenDoors();
-    // }
-  }
-
-
-
-  public bool DoorButton()
-  {
-    if (EnemiesDefeated())
-    {
-      OpenDoors();
-    }
-    return EnemiesDefeated();
-  }
-
   public bool EnemiesDefeated()
   {
     foreach (MoveTowards enemy in enemies)
