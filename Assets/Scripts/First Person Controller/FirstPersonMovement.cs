@@ -8,14 +8,16 @@ public class FirstPersonMovement : MonoBehaviour
     Vector2 velocity;
     Vector2 rawInput;
     bool frozen;
+    PlayerHealth health;
 
     void Awake(){
         currentSpeed = speed;
+        health = GetComponent<PlayerHealth>();
     }
 
     void FixedUpdate()
     {
-        if(frozen)return;
+        if(frozen || health.IsDead())return;
         MoveCharacter();
     }
 
@@ -41,5 +43,9 @@ public class FirstPersonMovement : MonoBehaviour
 
     public void Freeze(){
         frozen = true;
+    }
+
+    public bool isFrozen(){
+        return frozen;
     }
 }

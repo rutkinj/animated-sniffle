@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
   public void TakeDamage(int damage)
   {
+    if (isDead) return;
     hitpoints -= damage;
     currentHealthRecharge = healthRecharge;
     sfx.Play();
@@ -34,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     if (hitpoints <= 0)
     {
-      Die();
+      StartCoroutine(Die());
     }
   }
 
@@ -48,11 +49,13 @@ public class PlayerHealth : MonoBehaviour
     }
   }
 
-  private void Die()
+  private IEnumerator Die()
   {
     // anim.SetTrigger("die");
     healthDisplayFill.enabled = false;
     isDead = true;
+    yield return new WaitForSeconds(5);
+    FindObjectOfType<SceneLoader>().DoRestart();
   }
 
   public bool IsDead()

@@ -3,41 +3,43 @@ using UnityEngine.InputSystem;
 
 public class Jump : MonoBehaviour
 {
-    [SerializeField] float jumpStrength = 2;
-    GroundCheck groundCheck;
+  [SerializeField] float jumpStrength = 2;
+  GroundCheck groundCheck;
+  PlayerHealth health;
+  Rigidbody rb;
+  bool isJumping = false;
 
-    Rigidbody rb;
-    bool isJumping = false;
+  void Awake()
+  {
+    rb = GetComponent<Rigidbody>();
+    health = GetComponent<PlayerHealth>();
 
-    void Awake()
+    SetupGroundCheck();
+  }
+
+  void LateUpdate()
+  {
+    if (isJumping)
     {
-        rb = GetComponent<Rigidbody>();
-        SetupGroundCheck();
+      isJumping = false;
+      rb.AddForce(Vector3.up * 100 * jumpStrength);
     }
+  }
 
-    void LateUpdate()
+  void OnJump(InputValue value)
+  {
+    if (groundCheck.isGrounded && !health.IsDead())
     {
-        if (isJumping)
-        {
-            isJumping = false;
-            rb.AddForce(Vector3.up * 100 * jumpStrength);
-        }
+      isJumping = value.isPressed;
     }
+  }
 
-    void OnJump(InputValue value)
+  void SetupGroundCheck()
+  {
+    groundCheck = GetComponentInChildren<GroundCheck>();
+    if (!groundCheck)
     {
-        if (groundCheck.isGrounded)
-        {
-            isJumping = value.isPressed;
-        }
+      groundCheck = GroundCheck.Create(transform);
     }
-
-    void SetupGroundCheck()
-    {
-        groundCheck = GetComponentInChildren<GroundCheck>();
-        if (!groundCheck)
-        {
-            groundCheck = GroundCheck.Create(transform);
-        }
-    }
+  }
 }

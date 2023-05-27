@@ -28,11 +28,16 @@ public class Blammer : MonoBehaviour
   bool shotTwoReady = true;
   float shotTwoTimer = 0f;
 
+  PlayerHealth health;
+  FirstPersonMovement mover;
+
   void Awake()
   {
     cam = GetComponentInParent<Camera>();
     line = GetComponentInChildren<LineRenderer>();
     SFX = GetComponent<AudioSource>();
+    health = FindObjectOfType<PlayerHealth>();
+    mover = FindObjectOfType<FirstPersonMovement>();
   }
 
   void Update()
@@ -72,6 +77,7 @@ public class Blammer : MonoBehaviour
 
   void OnFire(InputValue value)
   {
+    if(health.IsDead() || mover.isFrozen()) return;
     DoShoot();
   }
 
