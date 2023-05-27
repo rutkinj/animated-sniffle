@@ -7,6 +7,7 @@ public class FirstPersonMovement : MonoBehaviour
     float currentSpeed;
     Vector2 velocity;
     Vector2 rawInput;
+    bool frozen;
 
     void Awake(){
         currentSpeed = speed;
@@ -14,6 +15,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(frozen)return;
         MoveCharacter();
     }
 
@@ -35,5 +37,9 @@ public class FirstPersonMovement : MonoBehaviour
 
     public void alterSpeed(float multiplier = 1){
         currentSpeed = speed * multiplier;
+    }
+
+    public void Freeze(){
+        frozen = true;
     }
 }

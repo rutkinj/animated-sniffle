@@ -6,6 +6,7 @@ public class RoomManager : MonoBehaviour
 {
   [SerializeField] Door[] doors;
   [SerializeField] MoveTowards[] enemies;
+  [SerializeField] bool finalRoom;
 
   bool isCleared = false;
   bool isActive = false;
@@ -73,7 +74,12 @@ public class RoomManager : MonoBehaviour
     isActive = true;
     foreach (MoveTowards enemy in enemies)
     {
+      if(!finalRoom){
       enemy.canMove = true;
+      }
+      if(finalRoom){
+        FindObjectOfType<FirstPersonMovement>().Freeze();
+      }
       enemy.GetComponent<Animator>().speed = 1;
     }
   }
