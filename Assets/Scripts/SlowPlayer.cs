@@ -18,7 +18,6 @@ public class SlowPlayer : MonoBehaviour
   {
     if (other.CompareTag("Player"))
     {
-        print("got the player");
       player.alterSpeed(speedAlter);
     }
   }
@@ -26,9 +25,11 @@ public class SlowPlayer : MonoBehaviour
   private void OnTriggerExit(Collider other) {
     if (other.CompareTag("Player"))
     {
-      print("player left");
-
       player.alterSpeed();
     }
+  }
+
+  public void DoSlow(float alter = 1){
+    player.alterSpeed(alter);
   }
 }

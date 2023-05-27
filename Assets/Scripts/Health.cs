@@ -25,6 +25,8 @@ public class Health : MonoBehaviour
         AudioRandomPitch(deathSFX);
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Attacker>().enabled = false;
+        SlowPlayer slow = GetComponent<SlowPlayer>();
+        if (slow !=null) slow.DoSlow();
         Destroy(gameObject, 1f);
     }
 
