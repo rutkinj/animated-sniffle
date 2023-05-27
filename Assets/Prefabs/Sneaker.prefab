@@ -154,7 +154,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.55, y: 2.95, z: 0.01}
+  m_Size: {x: 0.01, y: 2.95, z: 0.75}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1510271868
 MonoBehaviour:
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65849693269c384ab27f0ad4f04e9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 2
+  hitpoints: 1
   anim: {fileID: 504101198097975122}
   sfx: {fileID: -6675237613661782821}
   deathSFX: {fileID: 8300000, guid: 1e4e1933956579349b3bb249919155cb, type: 3}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  attackCooldown: 5
+  attackCooldown: 1
   range: 1
   attackDelay: 0.2
   anim: {fileID: 0}
