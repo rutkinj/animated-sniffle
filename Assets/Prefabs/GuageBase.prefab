@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7517054623766483488}
   - component: {fileID: 6563595013915946127}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GuageFil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4087839747536520663}
   - component: {fileID: 2910720223288565573}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GuageBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1681840203200717255}
   - component: {fileID: 5786250487028484793}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GuageBkg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
