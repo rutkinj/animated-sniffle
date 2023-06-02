@@ -66,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
   private void UpdateDisplay()
   {
     print(hitpoints / maxHitPoints);
+    
+    if(healthDisplay == null) return;
     healthDisplay.SetValueWithoutNotify((float)hitpoints / (float)maxHitPoints);
   }
 }
