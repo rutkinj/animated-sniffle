@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class FirstPersonMovement : MonoBehaviour
 {
   [SerializeField] float speed = 5;
+  [SerializeField] float sprintMod = 2;
   float currentSpeed;
   Vector2 velocity;
   Vector2 rawInput;
@@ -37,12 +38,11 @@ public class FirstPersonMovement : MonoBehaviour
   void OnRun(InputValue value)
   {
     if(value.isPressed){
-        currentSpeed = speed * 2;
+        currentSpeed = speed * sprintMod;
     }
     if(!value.isPressed){
         currentSpeed = speed;
     }
-
   }
 
   public void alterSpeed(float multiplier = 1)
